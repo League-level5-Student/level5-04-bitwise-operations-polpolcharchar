@@ -27,9 +27,24 @@ import org.junit.jupiter.api.Test;
  *      11111111 11111111 11111111 11110001   // rotate left by 1
  */
 public class _02_Rotate {
+	
+	int toBinary(int a) {
+		return Integer.parseInt(Integer.toBinaryString(a));
+	}
     
     int rotateLeft(int value, int rotateAmount) {
-        return -1;
+//    	System.out.println(toBinary(value));
+    	int edge = Integer.parseInt(Integer.toBinaryString(value).charAt(0) + "");
+//    	System.out.println(toBinary(edge));
+    	int shifted = value << 1;
+//    	System.out.println(toBinary(shifted));
+    	int result = shifted | edge;
+//    	System.out.println(toBinary(result));
+
+    	
+    	
+    	return toBinary(result);
+
     }
     
     int rotateRight(int value, int rotateAmount) {

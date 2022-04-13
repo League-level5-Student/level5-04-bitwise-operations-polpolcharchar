@@ -47,6 +47,10 @@ package _00_Binary_Conversion;
  * If you need to get the binary number of a negative value, find the positive
  * binary value, then invert the bits and add 1
  */
+
+
+
+
 public class _04_NegativeBinaryNumbers {
     public static void main(String[] args) {
         /*
@@ -63,6 +67,8 @@ public class _04_NegativeBinaryNumbers {
         System.out.println();
         System.out.println(printBin(b));
         System.out.println("~11000000 + 1 = " + printBin((byte)(~b + 1)));
+        
+        System.out.println(Integer.toBinaryString(-6));
     }
     
     static String printBin(byte val) {
