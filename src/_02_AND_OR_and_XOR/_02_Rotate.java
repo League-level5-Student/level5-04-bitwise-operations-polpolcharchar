@@ -28,27 +28,76 @@ import org.junit.jupiter.api.Test;
  */
 public class _02_Rotate {
 	
-	int toBinary(int a) {
-		return Integer.parseInt(Integer.toBinaryString(a));
+	String toBinary(int a) {
+		return Integer.toBinaryString(a);
 	}
     
     int rotateLeft(int value, int rotateAmount) {
-//    	System.out.println(toBinary(value));
-    	int edge = Integer.parseInt(Integer.toBinaryString(value).charAt(0) + "");
-//    	System.out.println(toBinary(edge));
-    	int shifted = value << 1;
-//    	System.out.println(toBinary(shifted));
-    	int result = shifted | edge;
-//    	System.out.println(toBinary(result));
 
+    	for(int i = 0; i < rotateAmount; i++) {
+    		int firstDigit = Integer.parseInt(toBinary(value).charAt(0) + "");
+    		value = value << 1;
+    		if(firstDigit == 1) {
+    			value += 1;
+    		}
+    	}
+    	return value;
     	
     	
-    	return toBinary(result);
+//    	int firstDigits = Integer.parseInt(toBinary(value).substring(0,rotateAmount) + "");
+//    	String firstReverseStr = "";
+//    	while(firstDigits > 0){
+//    		firstReverseStr += firstDigits % 10;
+//    		firstDigits /= 10;
+//    	}
+//    	int firstReverse = Integer.parseInt(firstReverseStr);
+//    	
+//    	value <<= rotateAmount;
+//    	
+//    	value += firstReverse;
+//    	
+//    	
+//    	return 0;
 
     }
     
     int rotateRight(int value, int rotateAmount) {
-        return -1;
+    	System.out.println();
+    	for(int i = 0; i < rotateAmount; i++) {
+    		System.out.println("Begin loop");
+    		int lastDigit = Integer.parseInt(toBinary(value).charAt(toBinary(value).length()-1) + "");
+    		
+//    		System.out.println("Val: " + value);
+//    		System.out.println("Binary: " + toBinary(value));
+//    		System.out.println("Last digit: " + lastDigit);
+//
+//    		System.out.println();
+//    		System.out.println("Val before: " + toBinary(value));
+    		value = value >>> 1;
+//    		System.out.println("Val after: " + toBinary(value));
+//    		System.out.println();
+    		
+    		if(lastDigit == 1) {
+    			value += (1 << 31);
+    		}
+//    		if(lastDigit == 1) {
+//    			value += Math.pow(2, 31)-2;
+//    		}
+    		
+    		
+//    		System.out.println("new val: " + value);
+//    		System.out.println("new bin: " + toBinary(value));
+
+    	}
+    	
+    	
+    	System.out.println(Integer.MAX_VALUE);
+    	System.out.println(Math.pow(2, 31));
+    	
+    	
+    	
+    	
+        return value;
     }
     
     @Test

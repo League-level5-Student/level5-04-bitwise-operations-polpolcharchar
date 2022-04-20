@@ -56,7 +56,15 @@ public class _02_HexadecimalPrinter implements ActionListener {
     }
     
     String binaryToDec(String binaryStr) {
-        return "-";
+    	int curr = 1;
+    	int result = 0;
+    	for(int i = binaryStr.length()-1; i >= 0; i--) {
+    		if(binaryStr.charAt(i) == '1') {
+    			result += curr;
+    		}
+    		curr *= 2;
+    	}
+        return result + "";
     }
 
     /*
@@ -66,8 +74,12 @@ public class _02_HexadecimalPrinter implements ActionListener {
         if (binaryStr.length() != 8) {
             return "-";
         }
+        String result = "";
+        for(int i = 0; i < binaryStr.length(); i++) {
+        	result += (int)binaryStr.charAt(i);//not working!
+        }
 
-        return "-";
+        return result;
     }
     
     public static void main(String[] args) {
