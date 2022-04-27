@@ -52,7 +52,45 @@ public class _02_HexadecimalPrinter implements ActionListener {
      * You don't have to handle negative numbers unless you want the challenge!
      */
     String binaryToHex(String binaryStr) {
-        return "-";
+    	int num = 0;
+    	int count = 1;
+    	
+    	while(binaryStr.length() > 0) {
+    		num += binaryStr.charAt(binaryStr.length()-1) == '1' ? count : 0;
+    		count *= 2;
+    		binaryStr = binaryStr.substring(0, binaryStr.length()-1);
+    	}
+    	
+    	System.out.println(num);
+    	
+    	String result = "";
+    	while(num > 0) {
+    		int remainder = num % 16;
+    		String add = remainder + "";
+    		
+//    		if(remainder == 10) {
+//    			add = "A";
+//    		}else if(remainder == 11) {
+//    			add = "B";
+//    		}else if (remainder == 12) {
+//    			add = "C";
+//    		}else if(remainder == 13) {
+//    			add = "D";
+//    		}else if(remainder == 14) {
+//    			add = "E";
+//    		}else if (remainder == 15) {
+//    			add = "F";
+//    		}
+    		if(remainder > 9) {
+    			add = (char)(remainder + 55) + "";
+    		}
+    		result = add + result;
+    		
+    		num >>= 4;
+    	}
+    	
+    	
+        return result;
     }
     
     String binaryToDec(String binaryStr) {
@@ -71,15 +109,20 @@ public class _02_HexadecimalPrinter implements ActionListener {
      * ASCII values are exactly 8 bits so return '-' if there isn't.
      */
     String binaryToAscii(String binaryStr) {
+    	
         if (binaryStr.length() != 8) {
             return "-";
         }
-        String result = "";
-        for(int i = 0; i < binaryStr.length(); i++) {
-        	result += (int)binaryStr.charAt(i);//not working!
-        }
+        int num = 0;
+    	int count = 1;
+    	
+    	while(binaryStr.length() > 0) {
+    		num += binaryStr.charAt(binaryStr.length()-1) == '1' ? count : 0;
+    		count *= 2;
+    		binaryStr = binaryStr.substring(0, binaryStr.length()-1);
+    	}
 
-        return result;
+        return (char)num + "";
     }
     
     public static void main(String[] args) {
